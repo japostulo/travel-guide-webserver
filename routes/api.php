@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->prefix('travel')->group(function (){
 });
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -39,12 +40,14 @@ Route::prefix('city')->group(function () {
     Route::get('/', [CityController::class, 'show']);
 });
 
-
 Route::middleware('auth:sanctum')->prefix('travel')->group(function () {
     Route::get('/', [TravelController::class, 'index']);
     Route::post('/', [TravelController::class, 'store']);
+    Route::get('/calc', [TravelController::class, 'calc']);
     Route::get('/{id}', [TravelController::class, 'show']);
     Route::put('/{id}', [TravelController::class, 'update']);
     Route::delete('/{id}', [TravelController::class, 'delete']);
-    Route::get('/calc', [TravelController::class, 'calc'])
 });
+
+
+

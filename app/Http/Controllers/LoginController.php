@@ -31,4 +31,13 @@ class LoginController extends Controller
 
     }
 
+    public function logout(Request $request){
+        $user = User::find($request->id);
+
+        $user->tokens()->delete();
+
+        return response()->json(["success" => "deslogado"]);
+
+   }
+
 }
