@@ -28,7 +28,7 @@ class CreateTravelTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('no action');
             $table->float('km');
-            $table->float('value');
+            $table->String('value');
             $table->timestamps();
         });
     }
