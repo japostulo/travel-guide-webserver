@@ -50,6 +50,11 @@ Com o comando acima, foi criado um usuário padrão, sinta-se livre para usa-lo.
 - usuário = *john.doe@example.com*
 - Senha = *123* 
 
+**Criar Key da aplicação**
+```
+php artisan key:generate
+```
+
 **Rodar servidor**
 
 Executar o comando abaixo para iniciar o servidor do backend:
