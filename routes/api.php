@@ -9,6 +9,7 @@ use App\Http\Controllers\CityController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,7 +29,7 @@ Route::middleware('auth:sanctum')->prefix('travel')->group(function (){
     Route::get('/', [TravelController::class, 'show']);
 });
 
-Route::post('login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -36,4 +37,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('city')->group(function () {
     Route::get('/', [CityController::class, 'show']);
+});
+
+
+Route::middleware('auth:sanctum')->prefix('travel')->group(function () {
+    Route::get('/', [TravelController::class, 'index']);
+    Route::post('/', [TravelController::class, 'store']);
+    Route::get('/{id}', [TravelController::class, 'show']);
+    Route::put('/{id}', [TravelController::class, 'update']);
+    Route::delete('/{id}', [TravelController::class, 'delete']);
+    Route::get('/calc', [TravelController::class, 'calc'])
 });

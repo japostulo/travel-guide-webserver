@@ -15,6 +15,20 @@ class CreateTravelTable extends Migration
     {
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade')
+                ->onUpdate('no action');
+            $table->foreignId('from_id')
+                ->constrained('cities')
+                ->onDelete('cascade')
+                ->onUpdate('no action');
+            $table->foreignId('to_id')
+                ->constrained('cities')
+                ->onDelete('cascade')
+                ->onUpdate('no action');
+            $table->float('km');
+            $table->float('value');
             $table->timestamps();
         });
     }
